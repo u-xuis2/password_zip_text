@@ -1,0 +1,29 @@
+{
+  "name": "password-zip-text",
+  "version": "1.0.0",
+  "description": "パスワード付きZIPファイル作成・解凍Webアプリケーション",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "NODE_ENV=production node server/index.js",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "nodemon server/index.js",
+    "client": "cd client && npm start",
+    "build": "cd client && npm run build",
+    "install-all": "npm install && cd client && npm install",
+    "build-and-start": "npm run build && npm start",
+    "prod": "npm run build-and-start"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "helmet": "^7.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1",
+    "concurrently": "^8.2.0"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "license": "MIT"
+}
