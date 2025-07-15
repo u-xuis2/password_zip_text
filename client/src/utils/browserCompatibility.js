@@ -24,9 +24,13 @@ export const check_browser_compatibility = () => {
         errors.push('Promiseがサポートされていません');
     }
     
-    // 非同期関数サポートチェック
+    // 非同期関数サポートチェック（より安全な方法）
     try {
-        new Function('async () => {}')();
+        // eval を使わずに関数コンストラクタで検証
+        const AsyncFunction = Object.getPrototypeOf(async function(){}).constructor;
+        if (typeof AsyncFunction !== 'function') {
+            throw new Error('async function constructor not available');
+        }
     } catch (e) {
         errors.push('async/awaitがサポートされていません');
     }
