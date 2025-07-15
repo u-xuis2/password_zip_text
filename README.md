@@ -17,10 +17,11 @@
 
 ## 技術スタック
 
-- **フロントエンド**: React 18 + styled-components
-- **バックエンド**: Node.js + Express
+- **フロントエンド**: React 18 + Bootstrap + React-Bootstrap
+- **バックエンド**: Node.js + Express（静的ファイル配信）
 - **ZIP処理**: JSZip（クライアントサイド）
 - **テストツール**: Python 3
+- **デプロイ**: サブディレクトリ `/password_zip_text/` 配下での動作対応
 
 ## 重要な注意事項
 
@@ -60,8 +61,10 @@ npm run client
 
 ### 3. アクセス（開発環境）
 
-- フロントエンド: <http://localhost:3000>
-- バックエンド: <http://localhost:9112>
+- フロントエンド: <http://localhost:3000> （開発サーバー）
+- バックエンド: <http://localhost:9112> （APIサーバー）
+
+**注意**: 開発環境では `localhost:3000` でアクセスしますが、本番環境では `/password_zip_text/` サブディレクトリでの動作となります。
 
 ## 本番環境での起動
 
@@ -94,7 +97,11 @@ npm run prod
 
 ### 本番環境アクセス
 
-- アプリケーション: <http://localhost:9112>
+- アプリケーション: <http://localhost:9112/password_zip_text/>
+
+⚠️ **重要**: このアプリケーションはサブディレクトリ `/password_zip_text/` での動作を前提としています。
+- 本番環境では `http://localhost:9112/password_zip_text/` でアクセスしてください
+- 直接 `http://localhost:9112/` にアクセスすると404エラーになります
 
 ## Supervisorによるサービス管理
 

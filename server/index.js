@@ -31,15 +31,18 @@ app.use(express.json({ limit: '1mb' }));
 app.use(express.urlencoded({ extended: true, limit: '1mb' }));
 
 // 静的ファイル配信（本番環境用）
+// アプリケーションは /password_zip_text/ サブディレクトリで動作
 if (process.env.NODE_ENV === 'production') {
     app.use('/password_zip_text', express.static(path.join(__dirname, '../client/build')));
     
+    // SPAのルーティング対応：/password_zip_text/ 配下の全てのリクエストをindex.htmlに転送
     app.get('/password_zip_text/*', (req, res) => {
         res.sendFile(path.join(__dirname, '../client/build/index.html'));
     });
 }
 
 // ヘルスチェックエンドポイント
+// /password_zip_text/api/health でアプリケーションの動作確認が可能
 app.get('/password_zip_text/api/health', (req, res) => {
     res.json({ status: 'OK', timestamp: new Date().toISOString() });
 });
