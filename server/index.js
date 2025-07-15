@@ -39,7 +39,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 // ヘルスチェックエンドポイント
-app.get('/api/health', (req, res) => {
+app.get('/password_zip_text/api/health', (req, res) => {
     res.json({ status: 'OK', timestamp: new Date().toISOString() });
 });
 
