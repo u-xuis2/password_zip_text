@@ -2,6 +2,7 @@
   "name": "password-zip-client",
   "version": "1.0.0",
   "private": true,
+  "homepage": "/password_zip_text",
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
